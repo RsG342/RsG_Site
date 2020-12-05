@@ -1,0 +1,34 @@
+{% load blog_tags %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="/static/css/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div id="header">
+        <span class="logo"><a href="{% url "blog:post_list" %}">Сайт Роберта Шапо</a></span>
+        <ul class="menu">
+            <li {% if section == "/blog/" %} class="selected"{% endif %}>
+                <a href="/blog/" class="current">Главная</a>
+            </li>
+            <li {% if section == "blog:post_search" %} class="selected"{% endif %}>
+                <a href="{% url "blog:post_search" %}">Поиск</a>
+            </li>
+            <li {% if section == "blog:about" %} class="selected"{% endif %}>
+                <a href="{% url "blog:about" %}">О сайте</a>
+            </li>
+        </ul>
+    </div>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+    <div id="sidebar">
+        <h3>Последние 5 постов</h3>
+        {% show_latest_posts 5 %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}
+{% block title %}О сайте{% endblock %}
+{% load blog_tags %}
+{% block content %}
+<h2>О сайте</h2>
+<p>Репозиторий на <a href="https://github.com/RsG342/RsG_Site">Github</a></p>
+<h3>Пока что я написал {% total_posts %} поста.</h3>
+<h3>Самые комментируемые посты:</h3>
+{% get_most_commented_posts as most_commented_posts %}
+<ul>
+    {% for post in most_commented_posts %}
+    <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
