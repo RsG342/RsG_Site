@@ -1,0 +1,2 @@
+Сайт написан на python 3.9 с использование фреймворка django 2.1.5 и библеотек:psycopg2, django-ckeditor, django-taggit и markdown
+
